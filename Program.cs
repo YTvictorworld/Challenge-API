@@ -8,14 +8,13 @@ using Challenge.Full.Stack.WebDev.Controllers;
 var builder = WebApplication.CreateBuilder(args);
 
 var dbHost = "localhost";
-var dbName = "your_database_name";
-var dbPass = "your_password";
+var dbName = "mysql_docker";
+var dbPass = "";
 
-var connStr = $"server={dbHost}; port=3306; database={dbName}; user=root; password={dbPass}";
+var connStr = $"server={dbHost}; port=33060; database={dbName}; user=root; password={dbPass}";
 
 // Configura los servicios antes de construir la aplicación
-builder.Services.AddDbContext<ProductDbContext>(options => 
-    options.UseMySql(connStr, ServerVersion.AutoDetect(connStr)));
+builder.Services.AddDbContext<ProductDbContext>(options => options.UseMySql(connStr, ServerVersion.AutoDetect(connStr)));
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
